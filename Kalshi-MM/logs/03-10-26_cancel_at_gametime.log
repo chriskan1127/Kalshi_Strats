@@ -1,0 +1,137 @@
+[18:18:02] === Cancel-at-gametime scheduler started ===
+[18:18:03] [source] live scoreboard (11 future game(s))
+[18:18:03] Found 11 game(s) today:
+[18:18:03]   MEM @ PHI  23:00 UTC  code=MEMPHI
+[18:18:03]   DET @ BKN  23:30 UTC  code=DETBKN
+[18:18:03]   WAS @ MIA  23:30 UTC  code=WASMIA
+[18:18:03]   DAL @ ATL  23:30 UTC  code=DALATL
+[18:18:03]   TOR @ HOU  00:00 UTC  code=TORHOU
+[18:18:03]   PHX @ MIL  00:00 UTC  code=PHXMIL
+[18:18:03]   BOS @ SAS  00:00 UTC  code=BOSSAS
+[18:18:03]   CHI @ GSW  02:00 UTC  code=CHIGSW
+[18:18:03]   CHA @ POR  02:00 UTC  code=CHAPOR
+[18:18:03]   IND @ SAC  02:00 UTC  code=INDSAC
+[18:18:03]   MIN @ LAL  03:00 UTC  code=MINLAL
+[18:18:04] [SCHEDULED] MEM @ PHI  in 00h 41m 56s  (task: KalshiCancel-MEMPHI)
+[18:18:05] [SCHEDULED] DET @ BKN  in 01h 11m 55s  (task: KalshiCancel-DETBKN)
+[18:18:06] [SCHEDULED] WAS @ MIA  in 01h 11m 54s  (task: KalshiCancel-WASMIA)
+[18:18:07] [SCHEDULED] DAL @ ATL  in 01h 11m 53s  (task: KalshiCancel-DALATL)
+[18:18:08] [SCHEDULED] TOR @ HOU  in 01h 41m 52s  (task: KalshiCancel-TORHOU)
+[18:18:08] [SCHEDULED] PHX @ MIL  in 01h 41m 51s  (task: KalshiCancel-PHXMIL)
+[18:18:09] [SCHEDULED] BOS @ SAS  in 01h 41m 51s  (task: KalshiCancel-BOSSAS)
+[18:18:10] [SCHEDULED] CHI @ GSW  in 03h 41m 50s  (task: KalshiCancel-CHIGSW)
+[18:18:11] [SCHEDULED] CHA @ POR  in 03h 41m 49s  (task: KalshiCancel-CHAPOR)
+[18:18:11] [SCHEDULED] IND @ SAC  in 03h 41m 48s  (task: KalshiCancel-INDSAC)
+[18:18:12] [SCHEDULED] MIN @ LAL  in 04h 41m 48s  (task: KalshiCancel-MINLAL)
+[18:18:12] 
+11 task(s) registered in Windows Task Scheduler.
+[18:18:12] Tasks visible in Task Scheduler under 'KalshiCancel-*'.
+[18:25:36] === Cancel-at-gametime scheduler started ===
+[18:25:36] [source] live scoreboard (11 future game(s))
+[18:25:36] Found 11 game(s) today:
+[18:25:36]   MEM @ PHI  23:00 UTC  code=MEMPHI
+[18:25:36]   DET @ BKN  23:30 UTC  code=DETBKN
+[18:25:36]   WAS @ MIA  23:30 UTC  code=WASMIA
+[18:25:36]   DAL @ ATL  23:30 UTC  code=DALATL
+[18:25:36]   TOR @ HOU  00:00 UTC  code=TORHOU
+[18:25:36]   PHX @ MIL  00:00 UTC  code=PHXMIL
+[18:25:36]   BOS @ SAS  00:00 UTC  code=BOSSAS
+[18:25:36]   CHI @ GSW  02:00 UTC  code=CHIGSW
+[18:25:36]   CHA @ POR  02:00 UTC  code=CHAPOR
+[18:25:36]   IND @ SAC  02:00 UTC  code=INDSAC
+[18:25:36]   MIN @ LAL  03:00 UTC  code=MINLAL
+[18:25:37] [ERROR] Failed to register task for MEM @ PHI
+[18:25:37]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:38] [ERROR] Failed to register task for DET @ BKN
+[18:25:38]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:39] [ERROR] Failed to register task for WAS @ MIA
+[18:25:39]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:40] [ERROR] Failed to register task for DAL @ ATL
+[18:25:40]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:40] [ERROR] Failed to register task for TOR @ HOU
+[18:25:40]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:41] [ERROR] Failed to register task for PHX @ MIL
+[18:25:41]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:42] [ERROR] Failed to register task for BOS @ SAS
+[18:25:42]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:43] [ERROR] Failed to register task for CHI @ GSW
+[18:25:43]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:44] [ERROR] Failed to register task for CHA @ POR
+[18:25:44]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:44] [ERROR] Failed to register task for IND @ SAC
+[18:25:44]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:45] [ERROR] Failed to register task for MIN @ LAL
+[18:25:45]   stdout: ERROR: The task XML is missing a required element or attribute.
+
+(46,4):EndBoundary:
+[18:25:45] 
+0 task(s) registered in Windows Task Scheduler.
+[18:25:45] Tasks visible in Task Scheduler under 'KalshiCancel-*'.
+[18:32:25] === Cancel-at-gametime scheduler started ===
+[18:32:26] [source] live scoreboard (11 future game(s))
+[18:32:26] Found 11 game(s) today:
+[18:32:26]   MEM @ PHI  23:00 UTC  code=MEMPHI
+[18:32:26]   DET @ BKN  23:30 UTC  code=DETBKN
+[18:32:26]   WAS @ MIA  23:30 UTC  code=WASMIA
+[18:32:26]   DAL @ ATL  23:30 UTC  code=DALATL
+[18:32:26]   TOR @ HOU  00:00 UTC  code=TORHOU
+[18:32:26]   PHX @ MIL  00:00 UTC  code=PHXMIL
+[18:32:26]   BOS @ SAS  00:00 UTC  code=BOSSAS
+[18:32:26]   CHI @ GSW  02:00 UTC  code=CHIGSW
+[18:32:26]   CHA @ POR  02:00 UTC  code=CHAPOR
+[18:32:26]   IND @ SAC  02:00 UTC  code=INDSAC
+[18:32:26]   MIN @ LAL  03:00 UTC  code=MINLAL
+[18:32:26] [ERROR] Failed to register task for MEM @ PHI
+[18:32:26]   stdout: ERROR: Access is denied.
+[18:32:27] [ERROR] Failed to register task for DET @ BKN
+[18:32:27]   stdout: ERROR: Access is denied.
+[18:32:28] [ERROR] Failed to register task for WAS @ MIA
+[18:32:28]   stdout: ERROR: Access is denied.
+[18:32:29] [ERROR] Failed to register task for DAL @ ATL
+[18:32:29]   stdout: ERROR: Access is denied.
+[18:32:29] [ERROR] Failed to register task for TOR @ HOU
+[18:32:29]   stdout: ERROR: Access is denied.
+[18:32:30] [ERROR] Failed to register task for PHX @ MIL
+[18:32:30]   stdout: ERROR: Access is denied.
+[18:32:31] [ERROR] Failed to register task for BOS @ SAS
+[18:32:31]   stdout: ERROR: Access is denied.
+[18:32:32] [ERROR] Failed to register task for CHI @ GSW
+[18:32:32]   stdout: ERROR: Access is denied.
+[18:32:32] [ERROR] Failed to register task for CHA @ POR
+[18:32:32]   stdout: ERROR: Access is denied.
+[18:32:33] [ERROR] Failed to register task for IND @ SAC
+[18:32:33]   stdout: ERROR: Access is denied.
+[18:32:34] [ERROR] Failed to register task for MIN @ LAL
+[18:32:34]   stdout: ERROR: Access is denied.
+[18:32:34] 
+0 task(s) registered in Windows Task Scheduler.
+[18:32:34] Tasks visible in Task Scheduler under 'KalshiCancel-*'.
+[22:34:03] === Cancel-at-gametime scheduler started ===
+[22:34:03] [source] live scoreboard (1 future game(s))
+[22:34:03] Found 1 game(s) today:
+[22:34:03]   MIN @ LAL  03:00 UTC  code=MINLAL
+[22:34:05] [ERROR] Failed to register task for MIN @ LAL
+[22:34:05]   stdout: ERROR: Access is denied.
+[22:34:05] 
+0 task(s) registered in Windows Task Scheduler.
+[22:34:05] Tasks visible in Task Scheduler under 'KalshiCancel-*'.

@@ -1,0 +1,77 @@
+[08:00:03] ===== Pipeline start =====
+[08:00:03] Activating conda environment: sports_trading
+[08:00:07] Running scrape.py...
+[08:00:30] scrape.py complete
+[08:00:30] Running build_csv.js...
+[08:00:30] build_csv.js complete
+[08:00:30] ===== Pipeline done =====
+[08:00:03] ===== Pipeline start =====
+[08:00:03] Activating conda environment: sports_trading
+[08:00:08] Running scrape.py...
+[08:00:31] scrape.py complete
+[08:00:31] Running build_csv.js...
+[08:00:32] build_csv.js complete
+[08:00:32] ===== Pipeline done =====
+[08:00:04] ===== Pipeline start =====
+[08:00:04] Activating conda environment: sports_trading
+[08:00:09] Running scrape.py...
+[08:00:33] scrape.py complete
+[08:00:33] Running build_csv.js...
+[08:00:34] build_csv.js complete
+[08:00:34] ===== Pipeline done =====
+[09:32:58] ===== Pipeline start =====
+[09:32:58] Activating conda environment: sports_trading
+[09:33:01] Running scrape.py...
+[09:33:24] scrape.py complete
+[09:33:24] Running build_csv.js...
+[09:33:24] build_csv.js complete
+[09:33:25] ===== Pipeline done =====
+[08:34:57] ===== Pipeline start =====
+[08:34:58] Activating conda environment: sports_trading
+[08:35:00] Running scrape.py...
+[08:35:21] scrape.py complete
+[08:35:21] Running build_csv.js...
+[08:35:21] build_csv.js complete
+[08:35:21] ===== Pipeline done =====
+[08:00:03] ===== Pipeline start =====
+[08:00:03] Activating conda environment: sports_trading
+[08:00:07] Running scrape.py...
+[08:00:28] scrape.py complete
+[08:00:28] Running build_csv.js...
+[08:00:29] build_csv.js complete
+[08:00:29] ===== Pipeline done =====
+[08:00:02] ===== Pipeline start =====
+[08:00:02] Activating conda environment: sports_trading
+[08:00:06] Running scrape.py...
+[08:00:26] scrape.py complete
+[08:00:26] Running build_csv.js...
+[08:00:27] build_csv.js complete
+[08:00:27] ===== Pipeline done =====
+[08:00:02] ===== Pipeline start =====
+[08:00:02] Activating conda environment: sports_trading
+[08:00:06] Running scrape.py...
+[08:00:25] scrape.py complete
+[08:00:25] Running build_csv.js...
+[08:00:25] build_csv.js complete
+[08:00:25] ===== Pipeline done =====
+[08:00:02] ===== Pipeline start =====
+[08:00:02] Activating conda environment: sports_trading
+[08:00:06] Running scrape.py...
+[08:00:33] scrape.py complete
+[08:00:33] Running build_csv.js...
+[08:00:33] build_csv.js complete
+[08:00:33] ===== Pipeline done =====
+[08:00:02] ===== Pipeline start =====
+[08:00:02] Activating conda environment: sports_trading
+[08:00:06] Running scrape.py...
+[08:00:26] scrape.py complete
+[08:00:26] Running build_csv.js...
+[08:00:26] build_csv.js complete
+[08:00:27] ===== Pipeline done =====
+[09:21:00] ===== Pipeline start =====
+[09:21:00] Activating conda environment: sports_trading
+[09:21:03] Running scrape.py...
+[09:21:25] scrape.py complete
+[09:21:25] Running build_csv.js...
+[09:21:25] build_csv.js complete
+[09:21:25] ===== Pipeline done =====

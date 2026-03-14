@@ -1,0 +1,19 @@
+# Secrets
+Kalshi-MM/chris_mm.txt
+Kalshi-MM/params.py
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Scheduler root log (verbose, not useful to track)
+logs/scheduler.log
+
+# Raw JSON archives (large, regenerated daily)
+Draftkings-Scraper/player-props-pregame/dk_props_*.json
+Draftkings-Scraper/player-props-pregame/dk_props_latest.json
+
+# OS
+.DS_Store
+Thumbs.db

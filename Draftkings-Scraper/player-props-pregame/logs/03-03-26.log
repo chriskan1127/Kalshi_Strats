@@ -1,0 +1,51 @@
+[18:57:34] ===== Pipeline start =====
+[18:57:34] Activating conda environment: sports_trading
+[18:58:32] ===== Pipeline start =====
+[18:58:32] Activating conda environment: sports_trading
+[19:17:48] ===== Pipeline start =====
+[19:17:48] Activating conda environment: sports_trading
+[19:17:54] Running scrape.py...
+Fetching points...
+Traceback (most recent call last):
+  File "C:\Users\chris\Sports-Trading\Draftkings-Scraper\scrape.py", line 68, in <module>
+    data = fetch_all()
+           ^^^^^^^^^^^
+  File "C:\Users\chris\Sports-Trading\Draftkings-Scraper\scrape.py", line 60, in fetch_all
+    time.sleep(random.uniform(2, 4))  # polite delay between requests
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+[19:18:37] ===== Pipeline start =====
+[19:18:37] Activating conda environment: sports_trading
+[19:18:42] ===== Pipeline start =====
+[19:18:42] Activating conda environment: sports_trading
+[19:29:17] ===== Pipeline start =====
+[19:29:17] Activating conda environment: sports_trading
+[19:29:56] ===== Pipeline start =====
+[19:29:56] Activating conda environment: sports_trading
+[19:29:59] Running scrape.py...
+Fetching points...
+Fetching rebounds...
+Fetching assists...
+Fetching threes...
+Fetching double_double...
+Fetching triple_double...
+Saved archive: C:\Users\chris\Sports-Trading\Draftkings-Scraper\dk_props_20260303_193015.json
+Saved latest:  C:\Users\chris\Sports-Trading\Draftkings-Scraper\dk_props_latest.json
+  points: 906 selections
+  rebounds: 811 selections
+  assists: 660 selections
+  threes: 470 selections
+  double_double: 90 selections
+  triple_double: 19 selections
+[19:30:16] scrape.py complete
+[19:30:16] Running build_csv.js...
+  points (Points): 906 selections
+  rebounds (Rebounds): 811 selections
+  assists (Assists): 660 selections
+  threes (3-Pointers Made): 470 selections
+  double_double (Double Double): 90 selections
+  triple_double (Triple Double): 19 selections
+
+Total rows: 2956 -> 03-03-26_props.csv
+[19:30:17] build_csv.js complete
+[19:30:17] ===== Pipeline done =====

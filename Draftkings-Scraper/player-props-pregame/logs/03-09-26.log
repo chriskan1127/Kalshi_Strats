@@ -1,0 +1,29 @@
+[08:00:03] ===== Pipeline start =====
+[08:00:03] Activating conda environment: sports_trading
+[08:00:07] Running scrape.py...
+Fetching points...
+Fetching rebounds...
+Fetching assists...
+Fetching threes...
+Fetching double_double...
+Fetching triple_double...
+Saved archive: C:\Users\chris\Sports-Trading\Draftkings-Scraper\player-props-pregame\dk_props_20260309_080028.json
+Saved latest:  C:\Users\chris\Sports-Trading\Draftkings-Scraper\player-props-pregame\dk_props_latest.json
+  points: 479 selections
+  rebounds: 449 selections
+  assists: 345 selections
+  threes: 280 selections
+  double_double: 44 selections
+  triple_double: 8 selections
+[08:00:28] scrape.py complete
+[08:00:28] Running build_csv.js...
+  points (Points): 479 selections
+  rebounds (Rebounds): 449 selections
+  assists (Assists): 345 selections
+  threes (3-Pointers Made): 280 selections
+  double_double (Double Double): 44 selections
+  triple_double (Triple Double): 8 selections
+
+Total rows: 1605 -> 03-09-26_props.csv
+[08:00:29] build_csv.js complete
+[08:00:29] ===== Pipeline done =====

@@ -1,0 +1,16 @@
+[Unit]
+Description=Kalshi Strats Scheduler
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Kalshi_Strats
+ExecStart=/home/ubuntu/miniconda3/envs/sports_trading/bin/python /home/ubuntu/Kalshi_Strats/scheduler.py
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
