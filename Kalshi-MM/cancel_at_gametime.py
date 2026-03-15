@@ -6,19 +6,12 @@ APScheduler DateTrigger jobs to cancel Kalshi orders at tip-off.
 """
 
 import json
+import logging
 import urllib.request
 from datetime import datetime, timezone
 
 _log_fh = None
-
-
-def log(msg: str) -> None:
-    ts   = datetime.now().strftime("%H:%M:%S")
-    line = f"[{ts}] {msg}"
-    print(line)
-    if _log_fh:
-        _log_fh.write(line + "\n")
-        _log_fh.flush()
+log = logging.getLogger(__name__)  # uses scheduler.py's logging config when imported
 
 
 # ── NBA schedule ───────────────────────────────────────────────────────────────
@@ -50,7 +43,7 @@ def _fetch_json(url: str) -> dict | None:
         with urllib.request.urlopen(req, timeout=15) as r:
             return json.loads(r.read().decode())
     except Exception as e:
-        log(f"[ERROR] Could not fetch {url}: {e}")
+        log.error(f"Could not fetch {url}: {e}")
         return None
 
 
@@ -69,9 +62,9 @@ def get_todays_games() -> list[dict]:
         games  = _parse_games(data.get("scoreboard", {}).get("games", []), "gameTimeUTC")
         future = [g for g in games if g["start_utc"] > now]
         if future:
-            log(f"[source] live scoreboard ({len(future)} future game(s))")
+            log.info(f"[NBA] live scoreboard ({len(future)} future game(s))")
             return future
-        log("[source] scoreboard has no future games — falling back to season schedule")
+        log.info("[NBA] scoreboard has no future games — falling back to season schedule")
 
     # --- Fallback: full season schedule ---
     data = _fetch_json("https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json")
@@ -87,5 +80,5 @@ def get_todays_games() -> list[dict]:
     )
     games  = _parse_games(raw, "gameDateTimeUTC")
     future = [g for g in games if g["start_utc"] > now]
-    log(f"[source] season schedule ({len(future)} future game(s) on {today_str})")
+    log.info(f"[NBA] season schedule ({len(future)} future game(s) on {today_str})")
     return future

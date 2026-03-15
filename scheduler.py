@@ -4,7 +4,7 @@
 Runs three jobs daily:
   08:00 AM ET  — DraftKings scraper pipeline (scrape.py + build_csv.js)
   08:05 AM ET  — Kalshi pregame market-maker (pregame_dk_playerprop.py)
-  08:10 AM ET  — Game-time cancel scheduler (cancel_at_gametime.py)
+  08:10 AM ET  — Register APScheduler DateTrigger cancel jobs for each game
 
 Start with:
     python scheduler.py
@@ -79,6 +79,7 @@ def _run(label: str, cmd: list[str]) -> None:
             cmd,
             capture_output=True,
             text=True,
+            timeout=7200,  # 2-hour hard ceiling; prevents hung jobs leaking threads
         )
         if result.stdout.strip():
             for line in result.stdout.strip().splitlines():
@@ -90,6 +91,8 @@ def _run(label: str, cmd: list[str]) -> None:
             log.info(f"=== DONE:  {label} (exit 0) ===")
         else:
             log.error(f"=== FAILED: {label} (exit {result.returncode}) ===")
+    except subprocess.TimeoutExpired:
+        log.error(f"=== TIMEOUT: {label} exceeded 2 hours — killed ===")
     except Exception as e:
         log.error(f"=== ERROR launching {label}: {e} ===")
 
@@ -171,7 +174,11 @@ def job_cancel_scheduler() -> None:
     """08:10 — Register APScheduler date-trigger jobs for each NBA game today."""
     if KALSHI_DIR not in sys.path:
         sys.path.insert(0, KALSHI_DIR)
-    from cancel_at_gametime import get_todays_games
+    try:
+        from cancel_at_gametime import get_todays_games
+    except ImportError:
+        log.warning("cancel_at_gametime.py not found — skipping NBA cancel scheduling.")
+        return
     _schedule_cancel_jobs("NBA", CANCEL_GAME_PY, get_todays_games)
 
 
@@ -210,50 +217,49 @@ def main() -> None:
     log.info("Kalshi-Strats scheduler starting …")
     log.info(f"  NBA pipeline : {PIPELINE_SH}")
     log.info(f"  NBA pregame  : {PREGAME_PY}")
-    log.info(f"  NBA cancel   : {CANCEL_PY}")
+    log.info(f"  NBA cancel   : {CANCEL_GAME_PY}")
     log.info(f"  NHL pipeline : {NHL_PIPELINE_SH}")
     log.info(f"  NHL pregame  : {NHL_PREGAME_PY}")
-    log.info(f"  NHL cancel   : {NHL_CANCEL_PY}")
+    log.info(f"  NHL cancel   : {NHL_CANCEL_GAME_PY}")
 
     _scheduler = BlockingScheduler(timezone="America/New_York")
-    scheduler  = _scheduler
 
-    scheduler.add_job(
+    _scheduler.add_job(
         job_dk_scraper,
         CronTrigger(hour=8, minute=0, timezone="America/New_York"),
         id="dk_scraper",
         name="NBA DraftKings Scraper Pipeline",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
+    _scheduler.add_job(
         job_dk_scraper_nhl,
         CronTrigger(hour=8, minute=0, timezone="America/New_York"),
         id="dk_scraper_nhl",
         name="NHL DraftKings Scraper Pipeline",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
+    _scheduler.add_job(
         job_pregame,
         CronTrigger(hour=8, minute=5, timezone="America/New_York"),
         id="pregame",
         name="NBA Pregame DK Player Props",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
+    _scheduler.add_job(
         job_pregame_nhl,
         CronTrigger(hour=8, minute=5, timezone="America/New_York"),
         id="pregame_nhl",
         name="NHL Pregame DK Player Props",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
+    _scheduler.add_job(
         job_cancel_scheduler,
         CronTrigger(hour=8, minute=10, timezone="America/New_York"),
         id="cancel_scheduler",
         name="NBA Cancel-at-Gametime Scheduler",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
+    _scheduler.add_job(
         job_cancel_scheduler_nhl,
         CronTrigger(hour=8, minute=10, timezone="America/New_York"),
         id="cancel_scheduler_nhl",
@@ -267,7 +273,7 @@ def main() -> None:
     log.info("Scheduler running. Press Ctrl+C to stop.")
 
     try:
-        scheduler.start()
+        _scheduler.start()
     except KeyboardInterrupt:
         log.info("Scheduler stopped by user.")
 
