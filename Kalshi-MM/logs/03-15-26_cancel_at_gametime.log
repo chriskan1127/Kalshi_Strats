@@ -1,0 +1,21 @@
+[12:10:00] === Cancel-at-gametime scheduler started ===
+[12:10:00] [source] scoreboard has no future games (still showing yesterday) — falling back to season schedule
+[12:10:01] [source] season schedule (7 future game(s) on 03/15/2026)
+[12:10:01] Found 7 game(s) today:
+[12:10:01]   MIN @ OKC  17:00 UTC  code=MINOKC
+[12:10:01]   DAL @ CLE  19:30 UTC  code=DALCLE
+[12:10:01]   DET @ TOR  19:30 UTC  code=DETTOR
+[12:10:01]   IND @ MIL  19:30 UTC  code=INDMIL
+[12:10:01]   POR @ PHI  22:00 UTC  code=PORPHI
+[12:10:01]   GSW @ NYK  00:00 UTC  code=GSWNYK
+[12:10:01]   UTA @ SAC  02:00 UTC  code=UTASAC
+[12:10:01] [SCHEDULED] MIN @ OKC  in 04h 49m 58s  (via at)
+[12:10:01] [SCHEDULED] DAL @ CLE  in 07h 19m 58s  (via at)
+[12:10:01] [SCHEDULED] DET @ TOR  in 07h 19m 58s  (via at)
+[12:10:01] [SCHEDULED] IND @ MIL  in 07h 19m 58s  (via at)
+[12:10:01] [SCHEDULED] POR @ PHI  in 09h 49m 58s  (via at)
+[12:10:01] [SCHEDULED] GSW @ NYK  in 11h 49m 58s  (via at)
+[12:10:01] [SCHEDULED] UTA @ SAC  in 13h 49m 58s  (via at)
+[12:10:01] 
+7 task(s) registered in Windows Task Scheduler.
+[12:10:01] Tasks visible in Task Scheduler under 'KalshiCancel-*'.
