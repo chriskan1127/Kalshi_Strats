@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """24/7 scheduler for Kalshi-Strats pipelines.
 
-Runs four jobs daily:
+Runs three jobs daily:
   08:00 AM ET  — DraftKings scraper pipeline (scrape.py + build_csv.js)
   08:05 AM ET  — Kalshi pregame market-maker (pregame_dk_playerprop.py)
   08:10 AM ET  — Game-time cancel scheduler (cancel_at_gametime.py)
-  08:30 AM ET  — Commit and push today's props + logs to GitHub
 
 Start with:
     python scheduler.py
@@ -204,33 +203,6 @@ def job_cancel_scheduler_nhl() -> None:
     _schedule_cancel_jobs("NHL", NHL_CANCEL_GAME_PY, get_nhl_games)
 
 
-def job_git_push() -> None:
-    """08:30 — Commit today's props CSVs and logs to GitHub."""
-    log.info("=== START: Git push ===")
-    try:
-        subprocess.run(["git", "-C", ROOT, "add",
-                        "Draftkings-Scraper/player-props-pregame/props/",
-                        "Draftkings-Scraper/player-props-pregame/logs/",
-                        "Draftkings-Scraper/hockey-props-pregame/props/",
-                        "Draftkings-Scraper/hockey-props-pregame/logs/",
-                        "Kalshi-MM/logs/",
-                        "Kalshi-MM/hockey/logs/"],
-                       check=True)
-        date_str = datetime.now().strftime("%m-%d-%y")
-        result = subprocess.run(
-            ["git", "-C", ROOT, "commit", "-m", f"Daily run {date_str}"],
-            capture_output=True, text=True
-        )
-        if result.returncode == 0:
-            subprocess.run(["git", "-C", ROOT, "push"], check=True)
-            log.info("=== DONE: Git push ===")
-        else:
-            # Nothing new to commit
-            log.info("=== SKIP: Git push — nothing new to commit ===")
-    except Exception as e:
-        log.error(f"=== ERROR: Git push — {e} ===")
-
-
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -288,19 +260,10 @@ def main() -> None:
         name="NHL Cancel-at-Gametime Scheduler",
         misfire_grace_time=300,
     )
-    scheduler.add_job(
-        job_git_push,
-        CronTrigger(hour=8, minute=30, timezone="America/New_York"),
-        id="git_push",
-        name="Git Commit and Push",
-        misfire_grace_time=300,
-    )
-
     log.info("Jobs scheduled (all times America/New_York):")
     log.info("  08:00  NBA + NHL DraftKings scraper pipelines")
     log.info("  08:05  NBA + NHL pregame market-makers")
     log.info("  08:10  NBA + NHL cancel-at-gametime schedulers")
-    log.info("  08:30  Git commit and push")
     log.info("Scheduler running. Press Ctrl+C to stop.")
 
     try:
