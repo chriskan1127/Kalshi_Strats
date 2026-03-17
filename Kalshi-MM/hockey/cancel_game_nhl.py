@@ -83,11 +83,12 @@ def get_resting_orders(private_key) -> list[dict]:
     return orders
 
 
-def cancel_order(private_key, order_id: str) -> bool:
+def cancel_order(private_key, order_id: str) -> tuple[bool, str]:
+    """Returns (success, response_body_snippet)."""
     api_path = f"/trade-api/v2/portfolio/orders/{order_id}"
     headers  = make_headers(private_key, public_api_key, "DELETE", api_path)
     resp     = requests.delete(f"{BASE_URL}/portfolio/orders/{order_id}", headers=headers)
-    return resp.status_code in (200, 204)
+    return resp.status_code in (200, 204), f"{resp.status_code} {resp.text[:120]}"
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -126,11 +127,12 @@ def main() -> None:
         for o in game_orders:
             ticker   = o.get("ticker", "")
             order_id = o.get("order_id", "")
-            if cancel_order(private_key, order_id):
-                log(f"  CANCELLED  [{ticker}]")
+            ok, resp_info = cancel_order(private_key, order_id)
+            if ok:
+                log(f"  CANCELLED  [{ticker}]  id={order_id}  resp={resp_info}")
                 cancelled += 1
             else:
-                log(f"  ERROR      [{ticker}]  id={order_id}")
+                log(f"  ERROR      [{ticker}]  id={order_id}  resp={resp_info}")
                 errors += 1
             time.sleep(WRITE_SLEEP)
 

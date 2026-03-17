@@ -42,7 +42,7 @@ LOGS_DIR  = os.path.join(SCRIPT_DIR, "logs")
 # Kalshi NHL series tickers — verify against live Kalshi markets before running
 # Format mirrors NBA: KXNHL + stat abbreviation
 PROP_TO_SERIES = {
-    "Goals":   "KXNHLGOAL",
+    "Goals":   "KXNHLFIRSTGOAL",   # DK scrapes First Goalscorer for this category
     "Points":  "KXNHLPTS",
     "Assists": "KXNHLAST",
 }
@@ -125,19 +125,31 @@ def find_market(
     player_name: str,
     threshold: int,
 ) -> dict | None:
-    """
-    All NHL props are threshold-based: title like "{Name}: 1+ goals"
-    Match on prefix "{name}: {threshold}+".
-    """
+    """Threshold-based props: title like '{Name}: 1+ goals'. Match on prefix."""
     name_lower = player_name.lower()
     prefix = f"{name_lower}: {threshold}+"
     for title, market in title_index.items():
         if title.startswith(prefix):
             return market
-    # Fallback: name substring + ": {N}+"
     tag = f": {threshold}+"
     for title, market in title_index.items():
         if name_lower in title and tag in title:
+            return market
+    return None
+
+
+def find_first_goalscorer_market(
+    title_index: dict[str, dict],
+    player_name: str,
+) -> dict | None:
+    """Match Kalshi 'First Goalscorer' markets: title = '{Name}: First Goalscorer'."""
+    name_lower = player_name.lower()
+    target = f"{name_lower}: first goalscorer"
+    if target in title_index:
+        return title_index[target]
+    # Fallback: name substring anywhere in title
+    for title, market in title_index.items():
+        if name_lower in title and "first goalscorer" in title:
             return market
     return None
 
@@ -222,21 +234,24 @@ def _run() -> None:
             player_prop  = row["player_prop"]        # e.g. "Goals 1+"
             implied_prob = float(row["implied_probability"])
 
-            # Parse numeric threshold ("Goals 1+" → 1)
-            m = re.search(r"(\d+)\+", player_prop)
-            if not m:
-                skipped += 1
-                continue
-            threshold = int(m.group(1))
-
             title_index = series_index.get(prop_type)
             if title_index is None:
                 skipped += 1
                 continue
 
             offer_price = max(MIN_OFFER, min(99, round(implied_prob * 100 + EDGE_ON_OFFER)))
-            market      = find_market(title_index, player, threshold)
-            thresh_str  = f"{threshold}+"
+
+            if "First Goalscorer" in player_prop:
+                market     = find_first_goalscorer_market(title_index, player)
+                thresh_str = "1st goal"
+            else:
+                m = re.search(r"(\d+)\+", player_prop)
+                if not m:
+                    skipped += 1
+                    continue
+                threshold  = int(m.group(1))
+                market     = find_market(title_index, player, threshold)
+                thresh_str = f"{threshold}+"
 
             if not market:
                 print(f"  SKIP   {player:<26} {prop_type:<16} {thresh_str}")

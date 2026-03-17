@@ -233,7 +233,7 @@ def main() -> None:
     )
     _scheduler.add_job(
         job_dk_scraper_nhl,
-        CronTrigger(hour=8, minute=0, timezone="America/New_York"),
+        CronTrigger(hour=16, minute=20, timezone="America/New_York"),
         id="dk_scraper_nhl",
         name="NHL DraftKings Scraper Pipeline",
         misfire_grace_time=300,
@@ -247,7 +247,7 @@ def main() -> None:
     )
     _scheduler.add_job(
         job_pregame_nhl,
-        CronTrigger(hour=8, minute=5, timezone="America/New_York"),
+        CronTrigger(hour=16, minute=30, timezone="America/New_York"),
         id="pregame_nhl",
         name="NHL Pregame DK Player Props",
         misfire_grace_time=300,
@@ -261,15 +261,18 @@ def main() -> None:
     )
     _scheduler.add_job(
         job_cancel_scheduler_nhl,
-        CronTrigger(hour=8, minute=10, timezone="America/New_York"),
+        CronTrigger(hour=16, minute=45, timezone="America/New_York"),
         id="cancel_scheduler_nhl",
         name="NHL Cancel-at-Gametime Scheduler",
         misfire_grace_time=300,
     )
     log.info("Jobs scheduled (all times America/New_York):")
-    log.info("  08:00  NBA + NHL DraftKings scraper pipelines")
-    log.info("  08:05  NBA + NHL pregame market-makers")
-    log.info("  08:10  NBA + NHL cancel-at-gametime schedulers")
+    log.info("  08:00  NBA DraftKings scraper pipeline")
+    log.info("  08:05  NBA pregame market-maker")
+    log.info("  08:10  NBA cancel-at-gametime scheduler")
+    log.info("  16:20  NHL DraftKings scraper pipeline")
+    log.info("  16:30  NHL pregame market-maker")
+    log.info("  16:45  NHL cancel-at-gametime scheduler")
     log.info("Scheduler running. Press Ctrl+C to stop.")
 
     try:
